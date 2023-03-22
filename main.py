@@ -27,7 +27,7 @@ def gen_file():
 
     # Compiler
     if user_i("Use GCC for compilation?") == "y":
-        file.write("CC = GCC\n")
+        file.write("CC = gcc\n")
 
     # Flags
     if user_i("Use compiler flags? (Recomended)") == "y":
@@ -65,14 +65,28 @@ def gen_file():
     file.write("\n")
 
     os.system('clear')
-    print("- Forging [==        ]")
-    time.sleep(0.5)
+    print("- Forging [=     ]")
+    time.sleep(0.2)
 
     # Dependancies
     file.write("DEPS = ")
     for j in deps:
         file.write(j + " ")
     file.write("\n")
+
+    os.system('clear')
+    print("\\ Forging [==    ]")
+    time.sleep(0.2)
+
+    # Source Files
+    file.write("SOURCE = ")
+    for i in cfiles:
+        file.write(i +" ")
+    file.write("\n")
+
+    os.system('clear')
+    print("| Forging [===   ]")
+    time.sleep(0.2)
 
     # .o files (OBJ)
     file.write("OBJ = ")
@@ -82,22 +96,51 @@ def gen_file():
     file.write("\n")
 
     os.system('clear')
-    print("\\ Forging [====      ]")
-    time.sleep(0.5)
-
-    # Rule: Output file instructions
-    file.write("%.o: %.c $(DEPS)\n")
-    file.write("\t")
-    file.write("$(CC) -c -o $@ $< $(CFLAGS)")
-    file.write("\n")
-    file.write("\n")
+    print("/ Forging [====  ]")
+    time.sleep(0.2)
 
     # Rule: Target
     file.write(exe_name + ": $(OBJ)")
     file.write("\n")
     file.write("\t")
-    file.write("$(CC) -o $@ $^ $(CFLAGS)")
+    file.write("$(CC) $(OBJ) $(CFLAGS) -o " + exe_name)
+    file.write("\n")
+    file.write("\n")
 
+    os.system('clear')
+    print("- Forging [===== ]")
+    time.sleep(0.2)
+
+    # Rule: Output file instructions
+    file.write("$(OBJ): $(SOURCE) $(DEPS)\n")
+    file.write("\t")
+    file.write("$(CC) $(SOURCE) $(CFLAGS) -c")
+    file.write("\n")
+
+    # Rule: Depandancies
+    file.write("$(DEPS): $(SOURCE)")
+    file.write("\n")
+    file.write("\t")
+    file.write("$(CC) -MM $(CFLAGS) -o $@ $<")
+    file.write("\n")
+    file.write("\n")
+    file.write("-include")
+
+    os.system('clear')
+    print("\\ Forging [======]")
+    time.sleep(0.2)
+
+    print("Forge Successful")
+    time.sleep(1)
+
+# Optional Make
+def opt_make():
+    """Optional make command after generation"""
+    if user_i("Make executable?") == "y":
+        os.system("make")
+        print("Makefile complete, executable compiled.")
+        time.sleep(2)
+    menu()
 ### MENU ###
 
 def menu():
@@ -112,6 +155,7 @@ def menu():
 
     if main_menu == "1":
         gen_file()
+        opt_make()
     elif main_menu == "2":
         exit()
     else:

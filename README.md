@@ -1,1 +1,3 @@
-# AP_cs_create
+# makeForge
+
+Just a little makefile generator.

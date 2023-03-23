@@ -1,4 +1,4 @@
 # makeForge
 
-Just a little python script to generate makefiles.
+Just a little makefile generator.
 Run main.py and you're set.

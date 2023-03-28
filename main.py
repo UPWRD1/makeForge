@@ -11,7 +11,7 @@ cfiles = []
 
 
 def user_i(message):
-    """ I was lazy, so here's a quick solution to replace 2 lines."""
+    """ A quick solution to replace 2 lines."""
     print(message)
     user_input = input("y/n: ")
     return user_input
@@ -64,6 +64,7 @@ def gen_file():
         file.write(i + " ")
     file.write("\n")
 
+    # Cosmetics
     os.system('clear')
     print("- Forging [=     ]")
     time.sleep(0.2)
@@ -74,6 +75,7 @@ def gen_file():
         file.write(j + " ")
     file.write("\n")
 
+    ## Cosmetics
     os.system('clear')
     print("\\ Forging [==    ]")
     time.sleep(0.2)
@@ -83,7 +85,8 @@ def gen_file():
     for i in cfiles:
         file.write(i +" ")
     file.write("\n")
-
+    
+    # Cosmetics
     os.system('clear')
     print("| Forging [===   ]")
     time.sleep(0.2)
@@ -95,6 +98,7 @@ def gen_file():
     file.write("\n")
     file.write("\n")
 
+    # Cosmetics
     os.system('clear')
     print("/ Forging [====  ]")
     time.sleep(0.2)
@@ -107,6 +111,7 @@ def gen_file():
     file.write("\n")
     file.write("\n")
 
+    # Cosmetics
     os.system('clear')
     print("- Forging [===== ]")
     time.sleep(0.2)
@@ -126,6 +131,7 @@ def gen_file():
     file.write("\n")
     file.write("-include")
 
+    # Cosmetics
     os.system('clear')
     print("\\ Forging [======]")
     time.sleep(0.2)
@@ -141,7 +147,8 @@ def opt_make():
         print("Makefile complete, executable compiled.")
         time.sleep(2)
     menu()
-### MENU ###
+
+##  MENU  ##
 
 def menu():
     """ Menu function, runs on start."""

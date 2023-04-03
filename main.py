@@ -19,7 +19,7 @@ def user_i(message):
 
 def clean_files(files_to_clean):
     """Clears the extensions from a list of files"""
-    return [sub.replace('.c', '.o') for sub in files_to_clean]
+    return [i.replace('.c', '.o') for i in files_to_clean]
 
 def gen_file():
     """ Main function to generate the makefile """

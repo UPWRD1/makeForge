@@ -17,6 +17,10 @@ def user_i(message):
     return user_input
 
 
+def clean_files(files_to_clean):
+    """Clears the extensions from a list of files"""
+    return [sub.replace('.c', '.o') for sub in files_to_clean]
+
 def gen_file():
     """ Main function to generate the makefile """
     global flags
@@ -45,7 +49,7 @@ def gen_file():
     print("Type the filenames of the c (.c) files, seperated by a space")
     new_files = input("Files: ")
     cfiles = new_files.split()
-    out_cfiles = [sub.replace('.c', '.o') for sub in cfiles]
+    out_cfiles = clean_files(cfiles)
 
     # Name the executable
     print("What do you want to name the executable?")
@@ -138,6 +142,8 @@ def gen_file():
 
     print("Forge Successful")
     time.sleep(1)
+
+
 
 # Optional Make
 def opt_make():

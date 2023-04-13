@@ -63,10 +63,7 @@ def gen_file():
     ##########################
 
     # Flags
-    file.write("CFLAGS = ")
-    for i in flags:
-        file.write(i + " ")
-    file.write("\n")
+    iter_write(file, "CFLAGS = ", flags)
 
     # Cosmetics
     os.system('clear')
@@ -74,10 +71,7 @@ def gen_file():
     time.sleep(0.2)
 
     # Dependancies
-    file.write("DEPS = ")
-    for j in deps:
-        file.write(j + " ")
-    file.write("\n")
+    iter_write(file, "DEPS = ", deps)
 
     ## Cosmetics
     os.system('clear')
@@ -85,22 +79,15 @@ def gen_file():
     time.sleep(0.2)
 
     # Source Files
-    file.write("SOURCE = ")
-    for i in cfiles:
-        file.write(i +" ")
-    file.write("\n")
-    
+    iter_write(file, "SOURCE = ", cfiles)
+
     # Cosmetics
     os.system('clear')
     print("| Forging [===   ]")
     time.sleep(0.2)
 
     # .o files (OBJ)
-    file.write("OBJ = ")
-    for i in out_cfiles:
-        file.write(i + " ")
-    file.write("\n")
-    file.write("\n")
+    iter_write(file, "OBJ = ", out_cfiles)
 
     # Cosmetics
     os.system('clear')
@@ -142,6 +129,16 @@ def gen_file():
 
     print("Forge Successful")
     time.sleep(1)
+
+def iter_write(file, item, lst):
+    """iterably Write to file"""
+    if len(lst) == 0:
+        pass
+    else:
+        file.write(item)
+        for i in lst:
+            file.write(i + " ")
+        file.write("\n")
 
 
 

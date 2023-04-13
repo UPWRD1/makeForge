@@ -1,11 +1,10 @@
 CC = gcc
 CFLAGS = -Wall -g 
-DEPS = 
-SOURCE = main.c thing.c 
-OBJ = main.o thing.o 
-
-Output: $(OBJ)
-	$(CC) $(OBJ) $(CFLAGS) -o Output
+DEPS = thing.h 
+SOURCE = thing.c 
+OBJ = thing.o 
+output: $(OBJ)
+	$(CC) $(OBJ) $(CFLAGS) -o output
 
 $(OBJ): $(SOURCE) $(DEPS)
 	$(CC) $(SOURCE) $(CFLAGS) -c
